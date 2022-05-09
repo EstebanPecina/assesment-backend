@@ -1,16 +1,16 @@
 
-let globalId = 4;
+let compliments = ["Gee, you're a smart cookie!", "Cool shirt!", "Your Javascript skills are stellar."];
 
 
 module.exports = {
 
     getCompliment: (req, res) => {
         const compliments = ["Gee, you're a smart cookie!", "Cool shirt!", "Your Javascript skills are stellar."];
-      
+        
         // choose random compliment
         let randomIndex = Math.floor(Math.random() * compliments.length);
         let randomCompliment = compliments[randomIndex];
-      
+        
         res.status(200).send(randomCompliment);
     },
 
@@ -25,34 +25,33 @@ module.exports = {
         res.status(200).send(randomFortune);
     },
 
-    newCompliment: (req, res) => {
+    addCompliment: (req, res) => {
+        const  {newCompliment} = req.body
 
-        let {text} = req.body
-        let newCompliment = {
-            id: globalId,
-            text: text
-        }
         compliments.push(newCompliment)
-        res.status(200).send(compliments);
-        globalId++;
+
+        res.status(200).send('Compliment added')
+    
     },
 
     deleteCompliment: (req, res) => {
-        let index = compliments.findIndex((compliment) => {
-            return compliment.id === +req.params.id;
-        })
-        compliments.splice(index, 1);
-        res.status(200).send(compliments);
+        const {id} = req.params
+
+        if(compliments[+id]) {
+            compliments.splice(id, 1)
+
+            res.status(200).send('Compliment removed.')
+        } else {
+            res.status(400).send(400)
+        }
+
+        compliments.splice(id, 1)
+
+        res.status(200).send('Compliment removed')
     },
 
     updateCompliment: (req, res) => {
-
-        let {id} = req.params;
-        let {type} = req.body;
-
-        let index = compliments.findIndex((compliment) => {
-            return compliment.id === +req.params.id;
-        })
+        const {id} = req.params
     }
 
 }

@@ -6,21 +6,19 @@
   <body class="container">
     <button id="complimentButton">Get a compliment</button>
     <button id="fortuneButton">Get a fortune</button>
-    <form>
-      <lab for="createCompliment">Create a compliment</lab>
-      <input type="text"></input>
-      <input type="submit" value="submit" id="createCompliment">
-    </form>
+    <input id="new-compliment-input" placeholder="Add compliment"/>
+    <button id="new-compliment-btn">Add compliment</button>
 
-    <label for ="compliment-select">Choose which one to delete</label>
-    <select name="compliments" id="compliment-select">
-      <option value="">--Please choose an option--</option>
-      <option value="1">Gee, you're a smart cookie!</option>
-      <option value="2">Cool shirt!</option>
-      <option value="3">Your Javascript skills are stellar.</option>
-      <input type="submit" value="delete" id="deleteBtn">
-    </select>
+    <br>
 
+    <input id="delete-input" placeholder="Index to remove"/>
+    <button id="delete-btn">Delete Compliment</button>
+
+    <br>
+
+    <input id="update-input" placeholder="Index to update"/>
+    <button id="update-btn">Update a compliment</button>
+    
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
     
